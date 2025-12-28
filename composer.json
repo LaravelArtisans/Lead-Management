@@ -17,15 +17,21 @@
         "laravel/wayfinder": "^0.1.9"
     },
     "require-dev": {
+        "driftingly/rector-laravel": "^2.1",
         "fakerphp/faker": "^1.23",
+        "larastan/larastan": "3.8.0",
         "laravel/boost": "^1.8",
         "laravel/pail": "^1.2.2",
         "laravel/pint": "^1.24",
         "laravel/sail": "^1.41",
         "mockery/mockery": "^1.6",
+        "mrpunyapal/rector-pest": "^0.1.5",
         "nunomaduro/collision": "^8.6",
         "pestphp/pest": "^4.2",
-        "pestphp/pest-plugin-laravel": "^4.0"
+        "pestphp/pest-plugin-laravel": "^4.0",
+        "pestphp/pest-plugin-type-coverage": "^4.0",
+        "phpstan/phpstan": "2.1.32",
+        "rector/rector": "^2.2"
     },
     "autoload": {
         "psr-4": {
@@ -57,9 +63,22 @@
             "Composer\\Config::disableProcessTimeout",
             "npx concurrently -c \"#93c5fd,#c4b5fd,#fb7185,#fdba74\" \"php artisan serve\" \"php artisan queue:listen --tries=1\" \"php artisan pail --timeout=0\" \"php artisan inertia:start-ssr\" --names=server,queue,logs,ssr --kill-others"
         ],
+        "lint": [
+            "rector",
+            "pint --parallel"
+        ],
+        "test:lint": [
+            "rector --dry-run",
+            "pint --test --parallel"
+        ],
+        "test:types": "phpstan analyse",
+        "test:type-coverage": "pest --type-coverage --min=100",
+        "test:unit": "pest --parallel --coverage --min=100",
         "test": [
-            "@php artisan config:clear --ansi",
-            "@php artisan test"
+            "@test:lint",
+            "@test:types",
+            "@test:type-coverage",
+            "@test:unit"
         ],
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
