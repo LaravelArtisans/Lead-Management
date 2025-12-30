@@ -85,14 +85,14 @@ export default function Dashboard() {
                             >
                                 {/* Gradient Background */}
                                 <div
-                                    className={`absolute -right-8 -top-8 h-24 w-24 rounded-full bg-gradient-to-br ${card.color} opacity-10 transition-transform group-hover:scale-110`}
+                                    className={`absolute -right-8 -top-8 h-24 w-24 rounded-full bg-linear-to-br ${card.color} opacity-10 transition-transform group-hover:scale-110`}
                                 />
 
                                 {/* Content */}
                                 <div className="relative z-10 flex flex-col gap-4">
                                     {/* Icon */}
                                     <div
-                                        className={`inline-flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-br ${card.color}`}
+                                        className={`inline-flex h-12 w-12 items-center justify-center rounded-lg bg-linear-to-br ${card.color}`}
                                     >
                                         <Icon className="h-6 w-6 text-white" />
                                     </div>
