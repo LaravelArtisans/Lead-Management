@@ -33,7 +33,6 @@ test('profile information can be updated', function (): void {
     expect($user->name)->toBe('Test User')->and($user->email)->toBe('test@example.com');
 });
 
-
 test('user can delete their account', function (): void {
     $user = User::factory()->create();
 
