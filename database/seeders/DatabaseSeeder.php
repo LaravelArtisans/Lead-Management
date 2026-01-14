@@ -6,6 +6,7 @@ namespace Database\Seeders;
 
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Database\Seeders\LeadSeeder;
 use Illuminate\Database\Seeder;
 
 final class DatabaseSeeder extends Seeder
@@ -22,5 +23,7 @@ final class DatabaseSeeder extends Seeder
             'password' => 'password',
             'email_verified_at' => now(),
         ]);
+
+        $this->call(LeadSeeder::class);
     }
 }
